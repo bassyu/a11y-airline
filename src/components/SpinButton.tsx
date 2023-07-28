@@ -9,13 +9,17 @@ const SpinButton: React.FC = () => {
   const [message, setMessage] = useState("");
 
   const increment = () => {
-    setCount(Math.min(MAX, count + 1));
-    setMessage(`성인 승객 추가 ${count + 1}`);
+    if (MAX > count) {
+      setCount(count + 1);
+      setMessage(`성인 승객 추가 ${count + 1}`);
+    }
   };
 
   const decrement = () => {
-    setCount(Math.max(MIN, count - 1));
-    setMessage(`성인 승객 감소 ${count - 1}`);
+    if (MIN < count) {
+      setCount(Math.max(MIN, count - 1));
+      setMessage(`성인 승객 감소 ${count - 1}`);
+    }
   };
 
   const toggleTooltip = (event: MouseEvent<HTMLDivElement>) => {
